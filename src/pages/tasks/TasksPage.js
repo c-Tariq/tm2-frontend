@@ -53,7 +53,7 @@ const SignOutIconContainer = styled.div`
 
 @inject('tasksStore', 'routerStore', 'userStore')
 @observer
-class TasksPage extends Component {
+class TasksPage extends React.Component {
   componentDidMount() {
     this.props.tasksStore.fetchTasks();
   }
@@ -68,7 +68,7 @@ class TasksPage extends Component {
   renderTasks = () => {
     const { tasksStore } = this.props;
 
-    if (!tasksStore.tasks.length) {
+    if (tasksStore.tasks.length < 1) {
       return <EmptyTasksPlaceholder>No tasks available. Create one?</EmptyTasksPlaceholder>
     }
 

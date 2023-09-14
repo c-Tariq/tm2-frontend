@@ -1,10 +1,11 @@
-import { observable, action } from 'mobx';
+import { observable, action, makeAutoObservable } from 'mobx';
 
 export default class TasksStore {
   @observable tasks = [];
   @observable filters = { status: '', search: '' };
 
   constructor(tasksService) {
+    makeAutoObservable(this);
     this.tasksService = tasksService;
   }
 
@@ -21,10 +22,15 @@ export default class TasksStore {
 
   @action
   async fetchTasks() {
-    const result = await this.tasksService.fetchTasks(this.filters);
+    try {
+      const result = await this.tasksService.fetchTasks(this.filters);
 
-    if (result) {
-      this.tasks = result.data;
+      if (result) {
+        this.tasks = result.data;
+      }
+      return this.tasks;
+    } catch (error) {
+      console.error('error fetching tasks', error);
     }
   }
 

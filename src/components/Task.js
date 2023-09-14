@@ -44,7 +44,7 @@ class Task extends Component {
           </CardContent>
           <CardActions style={{ padding: '14px' }} disableSpacing>
             <Grid
-              justify="space-between" // Add it here :)
+              justifyContent="space-between" // Add it here :)
               container 
             >
               <Grid item>
@@ -53,6 +53,8 @@ class Task extends Component {
                     value={this.props.status}
                     onChange={this.handleStatusChange}
                     displayEmpty
+                    name='selectStatus'
+                    id='selectStatus'
                   >
                     <MenuItem value={'OPEN'}>Open</MenuItem>
                     <MenuItem value={'IN_PROGRESS'}>In Progress</MenuItem>

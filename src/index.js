@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'mobx-react';
 import { createBrowserHistory } from 'history';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
@@ -27,14 +27,14 @@ services.authService = new AuthService();
 stores.tasksStore = new TasksStore(services.tasksService);
 stores.userStore = new UserStore(services.authService);
 
-const Root = (
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <Provider {...stores}>
     <HashRouter history={history}>
       <App />
     </HashRouter>
   </Provider>
 );
-ReactDOM.render(Root, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

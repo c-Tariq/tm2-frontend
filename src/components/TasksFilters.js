@@ -56,7 +56,7 @@ class TasksFilters extends Component {
     return (
       <FiltersContainer>
         <Grid
-          justify="space-between" // Add it here :)
+          justifyContent="space-between" // Add it here :)
           container
         >
           <Grid item>
@@ -65,6 +65,8 @@ class TasksFilters extends Component {
                 <TextField
                   placeholder="Search..."
                   value={this.state.search}
+                  name='filter'
+                  id='filter'
                   onChange={this.handleSearchTermChange}
                   InputProps={{
                     startAdornment: (
@@ -83,6 +85,8 @@ class TasksFilters extends Component {
               <FormControl style={{ width: '220px' }}>
                 <Select
                   value={this.state.status}
+                  id='filterStatus'
+                  name='filterStatus'
                   onChange={this.handleStatusFilterChange}
                   displayEmpty
                 >
