@@ -28,3 +28,6 @@ jobs:
         context: .
         push: true
         tags: your-dockerhub-username/your-repo-name:latest
+        build-args:
+          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+          PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
